@@ -1,0 +1,14 @@
+.uScaleOut {
+  transform: scale(0.6) !important;
+  transition: 0.5s ease;
+}
+
+.animateIn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.initialAnimation {
+  transform: translateY(0);
+  opacity: 1;
+}
