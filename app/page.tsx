@@ -5,9 +5,7 @@ import "slick-carousel/slick/slick.css";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import "slick-carousel/slick/slick-theme.css";
-import Slider, { Settings } from "react-slick";
 import React, { useEffect, useState } from "react";
-import styles from "@/components/SliderComponent.module.css";
 
 const poppins = localFont({
   src: "./fonts/Poppins-Medium.ttf",
@@ -54,18 +52,18 @@ export default function CarouselCustomNavigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [counted]);
 
-  const settings: Settings = {
-    dots: false,
-    infinite: true,
-    speed: 1200,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    adaptiveHeight: true,
-    autoplay: true,
-    draggable: true,
-    pauseOnFocus: false,
-    pauseOnHover: true,
-  };
+  // const settings: Settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 1200,
+  //   autoplaySpeed: 5000,
+  //   slidesToShow: 1,
+  //   adaptiveHeight: true,
+  //   autoplay: true,
+  //   draggable: true,
+  //   pauseOnFocus: false,
+  //   pauseOnHover: true,
+  // };
 
   return (
     <>

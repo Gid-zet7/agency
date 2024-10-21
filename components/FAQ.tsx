@@ -9,9 +9,9 @@ const poppins = localFont({
 });
 
 export default function FAQ() {
-  function toggleFAQ(event: any) {
+  function toggleFAQ(event: React.MouseEvent<HTMLButtonElement>) {
     const button = event.currentTarget;
-    const content = button.nextElementSibling;
+    const content = button.nextElementSibling as HTMLElement;
     button.setAttribute(
       "aria-expanded",
       button.getAttribute("aria-expanded") === "false" ? "true" : "false"
