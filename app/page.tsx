@@ -796,7 +796,7 @@ export default function CarouselCustomNavigation() {
           <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-black">
             Get Started Today
           </h1>
-          <p className={`text-black ${poppins.className}`}>
+          <p className={`text-black/50 ${poppins.className}`}>
             Connect with us to find the best talent for your organization.
           </p>
           <button
