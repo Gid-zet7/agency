@@ -14,7 +14,7 @@ export const RecruitmentFAQ = [
   {
     question: "What industries do you specialize in?",
     answer:
-      "We specialize in various industries, including IT, forklift operators, crane operators, and more, ensuring tailored recruitment solutions.",
+      "We specialize in various industries, including IT, forklift operation, crane operation, and more, ensuring tailored recruitment solutions.",
   },
   {
     question: "Do you offer temporary staffing solutions?",

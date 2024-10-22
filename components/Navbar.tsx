@@ -1,6 +1,13 @@
 "use client";
 import Link from "next/link";
+import localFont from "next/font/local";
 import { useState, useEffect } from "react";
+
+const poppins = localFont({
+  src: "../app/fonts/Poppins-Medium.ttf",
+  variable: "--font-poppins",
+  weight: "100 900",
+});
 
 const Navbar = () => {
   const [hamburgerBtn, setHamburgerBtn] = useState<HTMLElement | null>(null);
@@ -22,8 +29,10 @@ const Navbar = () => {
     <header className="sticky top-0 z-10 bg-slate-100">
       <section>
         <div className="flex justify-between py-5 px-8 gap-4 md:hidden ">
-          <h1 className="text-xl lg:text-3xl md:hidden">
-            <Link href="/">SofLogistics</Link>
+          <h1 className="text-xl lg:text-3xl md:hidden text-black">
+            <Link href="/" className="text-black">
+              Logo
+            </Link>
           </h1>
           <button
             id="hamburger-button"
@@ -35,27 +44,33 @@ const Navbar = () => {
         </div>
         <nav
           aria-label="main"
-          className="py-5 px-8 border-b border-blue-50 gap-4 sticky top-0 z-10 hidden space-x-8 text-sm md:block nav-links"
+          className="py-5 px-8 border-b border-blue-50 gap-4 sticky top-0 z-10 hidden space-x-8 text-sm md:block nav-links text-black"
         >
-          <div className="mx-auto flex max-w-7xl items-center justify-between">
-            <h1 className="text-xl">
-              <Link href="/">SofLogistics</Link>
+          <div className="mx-auto flex max-w-7xl items-center justify-between text-black">
+            <h1 className="text-xl text-black">
+              <Link href="/" className="text-black">
+                TP
+              </Link>
             </h1>
 
-            <ul className="flex gap-5 cursor-pointer">
-              <a href="/">
-                <li>Home</li>
+            <ul className={`${poppins.className} flex gap-5 cursor-pointer`}>
+              <a href="/" className="text-black">
+                <li className={`text-black `}>Home</li>
               </a>
 
               <a href="/about">
-                <li>About Us</li>
+                <li className="text-black">About Us</li>
               </a>
               <a href="/services">
-                <li>Services</li>
+                <li className="text-black">Services</li>
               </a>
 
               <a href="/contact">
-                <li>Contact Us</li>
+                <li className="text-black">Success Stories</li>
+              </a>
+
+              <a href="/contact">
+                <li className="text-black">Blog</li>
               </a>
             </ul>
           </div>
@@ -64,10 +79,10 @@ const Navbar = () => {
 
       <section
         id="mobile-menu"
-        className="top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-gray-400 text-5xl"
+        className={`${poppins.className} top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl`}
       >
         <nav
-          className="flex min-h-screen flex-col items-center py-8 text-gray-300 "
+          className="flex min-h-screen flex-col items-center py-8 text-black "
           aria-label="mobile"
         >
           <a href="/" className="w-full py-6 text-center hover:opacity-90">
@@ -87,7 +102,14 @@ const Navbar = () => {
             href="/contact"
             className="w-full py-6 text-center hover:opacity-90"
           >
-            Contact Us
+            Success Stories
+          </a>
+
+          <a
+            href="/contact"
+            className="w-full py-6 text-center hover:opacity-90"
+          >
+            Blog
           </a>
         </nav>
       </section>

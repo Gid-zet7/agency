@@ -52,6 +52,65 @@ export default function CarouselCustomNavigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [counted]);
 
+  useEffect(() => {
+    const navbarMenu = document.getElementById("menu");
+    const burgerMenu = document.getElementById("burger");
+    const overlayMenu = document.querySelector(".overlay");
+    const darkSwitch = document.getElementById("switch");
+
+    if (burgerMenu && navbarMenu) {
+      const toggleMenu = () => {
+        burgerMenu.classList.toggle("is-active");
+        navbarMenu.classList.toggle("is-active");
+      };
+
+      burgerMenu.addEventListener("click", toggleMenu);
+
+      // Cleanup on unmount
+      return () => burgerMenu.removeEventListener("click", toggleMenu);
+    }
+
+    // Close Navbar Menu on Click Links
+    const menuLinks = document.querySelectorAll(".menu-link");
+    menuLinks.forEach((link) => {
+      const handleLinkClick = () => {
+        burgerMenu?.classList.remove("is-active");
+        navbarMenu?.classList.remove("is-active");
+      };
+
+      link.addEventListener("click", handleLinkClick);
+
+      // Cleanup on unmount
+      return () => link.removeEventListener("click", handleLinkClick);
+    });
+
+    // Fixed Navbar Menu on Window Resize
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        if (navbarMenu?.classList.contains("is-active")) {
+          navbarMenu.classList.remove("is-active");
+          overlayMenu?.classList.remove("is-active");
+        }
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Dark and Light Mode on Switch Click
+    const toggleDarkMode = () => {
+      document.documentElement.classList.toggle("darkmode");
+      document.body.classList.toggle("darkmode");
+    };
+
+    darkSwitch?.addEventListener("click", toggleDarkMode);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      darkSwitch?.removeEventListener("click", toggleDarkMode);
+    };
+  }, []);
+
   // const settings: Settings = {
   //   dots: false,
   //   infinite: true,
@@ -67,97 +126,73 @@ export default function CarouselCustomNavigation() {
 
   return (
     <>
-      <header className={`c-header blur-nav ${poppins.className}`}>
-        <h1 className="c-header__title">Lorem</h1>
-        <nav className="c-navigation">
-          <ul className="c-navigation__list">
-            <li className="c-navigation__list-item c-navigation__list-item--active">
-              <a href="#" title="">
-                Home
-              </a>
-            </li>
-            <li className="c-navigation__list-item">
-              <a href="#" title="">
-                About us
-              </a>
-            </li>
-            <li className="c-navigation__list-item">
-              <a href="#" title="">
-                Services
-              </a>
-            </li>
-            <li className="c-navigation__list-item">
-              <a href="#" title="">
-                Success stories
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div className="c-cta">
-          <a href="" title="">
-            Subscribe
+      <header className="header" id="header">
+        <nav className="navbar container">
+          <a href="#" className="brand">
+            LOGO
           </a>
-          <button className="c-cta__button c-cta__button__search">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966">
-              <path d="M55.146 51.887L41.588 37.786c3.486-4.144 5.396-9.358 5.396-14.786 0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837 1.192-1.147 1.23-3.049.083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z" />
-            </svg>
+          <div className="burger" id="burger">
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+          </div>
+          <div className="menu" id="menu">
+            <ul className="menu-inner">
+              <li className="menu-item">
+                <a href="#" className="menu-link">
+                  Home
+                </a>
+              </li>
+              <li className="menu-item">
+                <a href="#" className="menu-link">
+                  About Us
+                </a>
+              </li>
+              <li className="menu-item">
+                <a href="#" className="menu-link">
+                  Success Stories
+                </a>
+              </li>
+              <li className="menu-item">
+                <a href="#" className="menu-link">
+                  Blog
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button className="switch" id="switch">
+            <i className="switch-light bx bx-sun"></i>
+            <i className="switch-dark bx bx-moon"></i>
           </button>
-          <button className="c-cta__button c-cta__button__menu"></button>
-        </div>
+        </nav>
       </header>
 
-      <section className="hero flex flex-col md:flex-row md:justify-center md:items-center">
-        <div className="bg-[url('/benjamin-child.jpg')] bg-cover h-full md:w-1/2 flex justify-center items-center px-5 flex-col gap-10">
-          <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content md:hidden text-black">
-            Connecting Talent with Opportunity
-          </h1>
-          <p className={`${poppins.className} md:hidden text-black`}>
-            Discover Ghana&apos;s premier recruitment agency. We specialize in
-            matching exceptional talent with leading employers. Experience the
-            difference with our personalized approach and commitment to
-            excellence.
-          </p>
-          <div className={`${poppins.className} flex gap-3 md:hidden`}>
-            <button className="px-5 py-3 bg-slate-100 rounded-md text-black">
-              Get Started
-            </button>
-            <button className="border border-white px-5 py-3 rounded-md">
-              Learn more
-            </button>
-          </div>
-        </div>
-        <div className={`px-10 hidden md:block bg-width `}>
-          <div className="flex flex-col gap-10 justify-center items-center">
-            <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content hidden md:block">
-              Connecting Talent with Opportunity
-            </h1>
-            <p className={`hidden md:block w-4/6 ${poppins.className}`}>
-              Discover Ghana&apos;s premier recruitment agency. We specialize in
-              matching exceptional talent with leading employers. Experience the
-              difference with our personalized approach and commitment to
-              excellence.
-            </p>
-            <div
-              className={`flex gap-3 justify-center items-center ${poppins.className}`}
-            >
-              <button className="px-5 py-3 bg-slate-100 rounded-md text-black">
+      <div className="main">
+        <section className="section banner banner-section">
+          <div className="container banner-column flex flex-col md:flex-row lg:gap-24">
+            <Image
+              className="banner-image rounded"
+              width={380}
+              height={380}
+              alt="connect"
+              src={"/hero-img.png"}
+            />
+            <div className="banner-inner">
+              <h1 className="heading-xl font-extrabold text-base-content">
+                Connecting Talent with Opportunity
+              </h1>
+              <p className={`${poppins.className} paragraph text-black/50`}>
+                We stores all your most important files in one secure location.
+                Access them whenever needed, share and collaborate with your
+                connections.
+              </p>
+              <button className="btn btn-darken btn-inline mt-3">
                 Get Started
-              </button>
-              <button className="border border-white px-5 py-3 rounded-md">
-                Learn more
               </button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#000000"
-          fillOpacity="1"
-          d="M0,192L24,186.7C48,181,96,171,144,176C192,181,240,203,288,213.3C336,224,384,224,432,240C480,256,528,288,576,282.7C624,277,672,235,720,192C768,149,816,107,864,122.7C912,139,960,213,1008,250.7C1056,288,1104,288,1152,277.3C1200,267,1248,245,1296,240C1344,235,1392,245,1416,250.7L1440,256L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"
-        ></path>
-      </svg> */}
+        </section>
+      </div>
 
       <section id="counter" className="mt-20 flex justify-center items-center">
         <div className="flex flex-col lg:flex-row max-w-7xl gap-5">
@@ -173,7 +208,9 @@ export default function CarouselCustomNavigation() {
                 perfect match every time.
               </p>
             </div>
-            <div className={`lg:col-span-1 ${poppins.className}`}>
+            <div
+              className={`${poppins.className} lg:col-span-1 mt-10 md:mt-0 `}
+            >
               <div className="flex gap-2">
                 <svg
                   fill="#000000"
@@ -209,8 +246,8 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-3xl font-bold mb-4 count"
-                  data-count="2023"
+                  className="text-black text-2xl font-bold mb-4 count"
+                  data-count="14"
                 >
                   0
                 </span>{" "}
@@ -218,7 +255,7 @@ export default function CarouselCustomNavigation() {
                   years
                 </span>
               </div>
-              <p className={`text-black ${poppins.className}`}>
+              <p className={`text-black/50 text-md ${poppins.className}`}>
                 Since our founding in 2010, we have successfully placed
                 thousands of candidates, adapting to the evolving job market to
                 meet the unique needs of both candidates and companies.
@@ -258,7 +295,7 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-3xl font-bold mb-4 count"
+                  className="text-black text-2xl font-bold mb-4 count"
                   data-count="5000"
                 >
                   0
@@ -268,7 +305,7 @@ export default function CarouselCustomNavigation() {
                 </span>
               </div>
 
-              <p className={`text-black ${poppins.className}`}>
+              <p className={`text-black/50 text-md ${poppins.className}`}>
                 Our personalized approach and commitment to excellence have made
                 us a trusted name in the recruitment industry, helping
                 businesses thrive with the right talent.
@@ -308,7 +345,7 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-3xl font-bold mb-4 count"
+                  className="text-black text-2xl font-bold mb-4 count"
                   data-count="4"
                 >
                   0
@@ -317,7 +354,7 @@ export default function CarouselCustomNavigation() {
                   core values
                 </span>
               </div>
-              <p className={`text-black ${poppins.className}`}>
+              <p className={`text-black/50 text-md ${poppins.className}`}>
                 Our core values include Integrity, Excellence, Collaboration,
                 and Innovation, which guide our operations and interactions with
                 clients and candidates.
@@ -366,7 +403,7 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-3xl font-bold mb-4 count"
+                  className="text-black text-2xl font-bold mb-4 count"
                   data-count="3"
                 >
                   0
@@ -376,7 +413,7 @@ export default function CarouselCustomNavigation() {
                 </span>
               </div>
 
-              <p className={`text-black ${poppins.className}`}>
+              <p className={`text-black/50 text-md ${poppins.className}`}>
                 Our dedicated team consists of experienced professionals like
                 John Doe, our CEO, who leads with a passion for connecting
                 talent with opportunity, and Jane Smith, our Recruitment
@@ -386,7 +423,7 @@ export default function CarouselCustomNavigation() {
           </div>
           <div className="lg:w-full lg:flex-1">
             <Image
-              src={"/don-bosco.jpeg"}
+              src={"/nicholas.jpeg"}
               height={500}
               width={500}
               alt="candidates image"
@@ -414,7 +451,7 @@ export default function CarouselCustomNavigation() {
               <strong className="text-black font-semibold text-xl">
                 Candidate Access
               </strong>
-              <p className={`text-black ${poppins.className} mt-4`}>
+              <p className={`text-black/50 text-md ${poppins.className} mt-4`}>
                 Gain access to a vast pool of qualified candidates ready to meet
                 your business needs.
               </p>
@@ -423,7 +460,7 @@ export default function CarouselCustomNavigation() {
               <strong className="text-black font-semibold text-xl ">
                 Streamlined Process
               </strong>
-              <p className={`text-black ${poppins.className} mt-4`}>
+              <p className={`text-black/50 text-md ${poppins.className} mt-4`}>
                 Experience a hiring process that saves time and resources,
                 ensuring efficiency.
               </p>
@@ -433,28 +470,28 @@ export default function CarouselCustomNavigation() {
       </section>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#000000"
+          fill="#F9C94F"
           fillOpacity="1"
           d="M0,192L24,186.7C48,181,96,171,144,176C192,181,240,203,288,213.3C336,224,384,224,432,240C480,256,528,288,576,282.7C624,277,672,235,720,192C768,149,816,107,864,122.7C912,139,960,213,1008,250.7C1056,288,1104,288,1152,277.3C1200,267,1248,245,1296,240C1344,235,1392,245,1416,250.7L1440,256L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"
         ></path>
       </svg>
 
-      <section className="bg-black mt-0 flex flex-col justify-center items-center">
+      <section className="bg-[#F9C94F] mt-0 flex flex-col justify-center items-center">
         <div className="max-w-7xl mb-10 px-5">
           <div className="flex flex-col md:flex-row gap-4 mb-16 ">
             <div>
-              <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-white">
+              <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-black">
                 Why Choose Talent Pool for Your Recruitment Needs
               </h1>
             </div>
-            <div className={`text-white ${poppins.className}`}>
+            <div className={`text-black ${poppins.className}`}>
               Talent Pool is your trusted partner in recruitment, offering
               unparalleled access to top talent and a personalized approach to
               meet your unique needs. Our streamlined hiring process saves time
               and resources, ensuring a perfect match every time.
             </div>
           </div>
-          <div className="flex flex-col gap-20 md:flex-row md:gap-4 justify-center items-center">
+          <div className="flex flex-col gap-20 md:flex-row md:gap-10 justify-center items-center">
             <div>
               <div className="mb-4">
                 <Image
@@ -466,15 +503,15 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-white font-semibold text-xl">
+                <strong className="text-black font-semibold text-xl">
                   Access to Top Talent Across Industries
                 </strong>
-                <p className="my-4">
+                <p className="my-4 text-black">
                   Our extensive network connects you with highly qualified
                   candidates, ensuring you find the perfect fit for your
                   organization.
                 </p>
-                <button className=" px-5 py-3 hover:bg-slate-200 rounded-md hover:text-black">
+                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
                 </button>
               </div>
@@ -482,7 +519,7 @@ export default function CarouselCustomNavigation() {
             <div>
               <div className="mb-4">
                 <Image
-                  src={"/agency.png"}
+                  src={"/hiring.jpeg"}
                   width={400}
                   height={500}
                   alt="brainstorming group image"
@@ -490,14 +527,14 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-white font-semibold text-lg">
+                <strong className="text-black font-semibold text-lg">
                   Efficient and Streamlined Hiring Process
                 </strong>
-                <p className="my-4">
+                <p className="my-4 text-black">
                   We utilize innovative strategies to make the hiring process
                   efficient, saving you valuable time and resources.
                 </p>
-                <button className="px-5 py-3 hover:bg-slate-200 rounded-md hover:text-black">
+                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
                 </button>
               </div>
@@ -513,15 +550,15 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-white font-semibold text-xl">
+                <strong className="text-black font-semibold text-xl">
                   Personalized Recruitment Solutions
                 </strong>
-                <p className="my-4">
+                <p className="my-4 text-black">
                   Our dedicated team tailors solutions to meet your specific
                   needs, providing expert guidance throughout your recruitment
                   journey.
                 </p>
-                <button className=" px-5 py-3 hover:bg-slate-200 rounded-md hover:text-black">
+                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
                 </button>
               </div>
@@ -543,7 +580,9 @@ export default function CarouselCustomNavigation() {
             who found their perfect match through our dedicated services.
           </p>
         </div>
-        <div className="flex justify-center items-center my-10">
+        <div
+          className={`${poppins.className} flex justify-center items-center my-10`}
+        >
           <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-2 gap-5 max-w-7xl">
             <div className="flex flex-col gap-4 bg-blue-500 rounded-md p-4">
               <Image
@@ -552,7 +591,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -565,7 +604,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -577,7 +620,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -590,7 +633,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -602,7 +649,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -615,7 +662,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -627,7 +678,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -640,7 +691,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -652,7 +707,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -665,7 +720,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -677,7 +736,7 @@ export default function CarouselCustomNavigation() {
                 height={0}
                 alt="five stars rating"
               />
-              <p>
+              <p className="text-sm">
                 Talent Pool helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
@@ -690,7 +749,11 @@ export default function CarouselCustomNavigation() {
                   className="rounded-full w-10 h-1w-10"
                 />
                 <div className="flex flex-col gap-1">
-                  <strong className="text-bold text-white">Kwame Asante</strong>
+                  <strong
+                    className={`text-extrabold text-white ${poppins.className}`}
+                  >
+                    Kwame Asante
+                  </strong>
                   <h4>HR manager at Fintech Gh</h4>
                 </div>
               </div>
@@ -701,7 +764,7 @@ export default function CarouselCustomNavigation() {
 
       <section className="flex flex-col justify-center items-center px-5">
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:.latest-insights_grid gap-10 max-w-7xl">
-          <div className="flex justify-between col-span-2">
+          <div className="flex flex-col md:flex-row justify-between col-span-2">
             <div className="flex flex-col gap-4">
               <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-black">
                 Latest Insights
@@ -710,8 +773,10 @@ export default function CarouselCustomNavigation() {
                 Stay updated with the latest trends and tips in recruitment.
               </p>
             </div>
-            <div>
-              <button className={`text-black ${poppins.className}`}>
+            <div className="mt-10 md:mt-0">
+              <button
+                className={`${poppins.className} text-black px-5 py-3 hover:bg-slate-200 rounded-md`}
+              >
                 Read More
               </button>
             </div>
@@ -721,12 +786,14 @@ export default function CarouselCustomNavigation() {
             <div className="flex-1 flex flex-col gap-2 md:gap-5 bg-slate-300 p-2 md:p-8 rounded-r-md">
               <p className="text-black/50 text-xs">Recruitment Trends</p>
               <strong
-                className={`${poppins.className} text-black font-extrabold text-lg md:text-3xl`}
+                className={`${poppins.className} text-black font-extrabold text-md md:text-3xl`}
               >
                 Top Recruitment Trends in 2023
               </strong>
 
-              <p className={`text-black/50 text-sm ${poppins.className}`}>
+              <p
+                className={`text-black/50 text-xs md:text-lg ${poppins.className}`}
+              >
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
@@ -734,16 +801,18 @@ export default function CarouselCustomNavigation() {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-1 bg-[url('/erika-giraud.jpg')] bg-cover rounded-l-md"></div>
+            <div className="flex-1 bg-[url('/grad.jpeg')] bg-cover rounded-l-md"></div>
             <div className="flex-1 flex flex-col gap-2 md:gap-5 bg-slate-300 p-2 md:p-8 rounded-r-md">
               <p className="text-black/50 text-xs">Career Development</p>
               <strong
-                className={`${poppins.className} text-black font-extrabold text-lg md:text-3xl`}
+                className={`${poppins.className} text-black font-extrabold text-md md:text-3xl`}
               >
                 The Importance of Networking in Job Search
               </strong>
 
-              <p className={`text-black/50 text-sm ${poppins.className}`}>
+              <p
+                className={`text-black/50 text-xs md:text-lg ${poppins.className}`}
+              >
                 Discover why networking is a vital component of a successful job
                 search.
               </p>
@@ -751,16 +820,18 @@ export default function CarouselCustomNavigation() {
             </div>
           </div>
           <div className="flex">
-            <div className="flex-1 bg-[url('/charlesdeluvio.jpg')] bg-cover rounded-l-md"></div>
+            <div className="flex-1 bg-[url('/hiring.jpeg')] bg-cover rounded-l-md"></div>
             <div className="flex-1 flex flex-col gap-2 md:gap-5 bg-slate-300 p-2 md:p-8 rounded-r-md">
               <p className="text-black/50 text-xs">Interview Tips</p>
               <strong
-                className={`${poppins.className} text-black font-extrabold text-lg md:text-3xl`}
+                className={`${poppins.className} text-black font-extrabold text-md md:text-3xl`}
               >
                 Interview Preparation: Tips for Success
               </strong>
 
-              <p className={`text-black/50 text-sm ${poppins.className}`}>
+              <p
+                className={`text-black/50 text-xs md:text-lg ${poppins.className}`}
+              >
                 Get ready for your next interview with these essential
                 preparation tips.
               </p>
@@ -772,12 +843,14 @@ export default function CarouselCustomNavigation() {
             <div className="flex-1 flex flex-col gap-2 md:gap-5 bg-slate-300 p-2 md:p-8 rounded-r-md">
               <p className="text-black/50 text-xs">Career Tips</p>
               <strong
-                className={`${poppins.className} text-black font-extrabold text-lg md:text-3xl`}
+                className={`${poppins.className} text-black font-extrabold text-md md:text-3xl`}
               >
                 How to Write an Effective CV
               </strong>
 
-              <p className={`text-black/50 text-sm ${poppins.className}`}>
+              <p
+                className={`text-black/50 text-xs md:text-lg ${poppins.className}`}
+              >
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
@@ -798,7 +871,7 @@ export default function CarouselCustomNavigation() {
             Connect with us to find the best talent for your organization.
           </p>
           <button
-            className={`${poppins.className} px-5 py-3 bg-blue-500 rounded`}
+            className={`${poppins.className} px-5 py-3 bg-[#F9C94F] rounded`}
           >
             Contact Us
           </button>
@@ -807,7 +880,7 @@ export default function CarouselCustomNavigation() {
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#000"
+          fill="#F9C94F"
           fillOpacity="1"
           d="M0,288L26.7,293.3C53.3,299,107,309,160,304C213.3,299,267,277,320,250.7C373.3,224,427,192,480,181.3C533.3,171,587,181,640,170.7C693.3,160,747,128,800,144C853.3,160,907,224,960,256C1013.3,288,1067,288,1120,288C1173.3,288,1227,288,1280,293.3C1333.3,299,1387,309,1413,314.7L1440,320L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
         ></path>

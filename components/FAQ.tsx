@@ -74,7 +74,9 @@ export default function FAQ() {
                   style={{ transition: "max-height 0.3s ease-in-out 0s" }}
                 >
                   <div className="pb-5 leading-relaxed">
-                    <div className="space-y-2 leading-relaxed text-black">
+                    <div
+                      className={`space-y-2 text-sm md:text-lg leading-relaxed text-black/50 ${poppins.className}`}
+                    >
                       {faq.answer}
                     </div>
                   </div>
