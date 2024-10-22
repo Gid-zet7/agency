@@ -188,7 +188,7 @@ export default function CarouselCustomNavigation() {
                 commitment to excellence.
               </p>
               <button className="btn btn-darken btn-inline mt-3">
-                Get Started
+                Get Started &rarr;
               </button>
             </div>
           </div>
