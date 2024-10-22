@@ -182,9 +182,10 @@ export default function CarouselCustomNavigation() {
                 Connecting Talent with Opportunity
               </h1>
               <p className={`${poppins.className} paragraph text-black/50`}>
-                We stores all your most important files in one secure location.
-                Access them whenever needed, share and collaborate with your
-                connections.
+                Discover Ghana&apos;s premier recruitment agency. We specialize
+                in matching exceptional talent with leading employers.
+                Experience the difference with our personalized approach and
+                commitment to excellence.
               </p>
               <button className="btn btn-darken btn-inline mt-3">
                 Get Started
