@@ -3,9 +3,9 @@ import Image from "next/image";
 import FAQ from "@/components/FAQ";
 import "slick-carousel/slick/slick.css";
 import localFont from "next/font/local";
-import Footer from "@/components/Footer";
 import "slick-carousel/slick/slick-theme.css";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const poppins = localFont({
   src: "./fonts/Poppins-Medium.ttf",
@@ -56,7 +56,6 @@ export default function CarouselCustomNavigation() {
     const navbarMenu = document.getElementById("menu");
     const burgerMenu = document.getElementById("burger");
     const overlayMenu = document.querySelector(".overlay");
-    const darkSwitch = document.getElementById("switch");
 
     if (burgerMenu && navbarMenu) {
       const toggleMenu = () => {
@@ -66,7 +65,6 @@ export default function CarouselCustomNavigation() {
 
       burgerMenu.addEventListener("click", toggleMenu);
 
-      // Cleanup on unmount
       return () => burgerMenu.removeEventListener("click", toggleMenu);
     }
 
@@ -80,11 +78,9 @@ export default function CarouselCustomNavigation() {
 
       link.addEventListener("click", handleLinkClick);
 
-      // Cleanup on unmount
       return () => link.removeEventListener("click", handleLinkClick);
     });
 
-    // Fixed Navbar Menu on Window Resize
     const handleResize = () => {
       if (window.innerWidth >= 992) {
         if (navbarMenu?.classList.contains("is-active")) {
@@ -96,18 +92,36 @@ export default function CarouselCustomNavigation() {
 
     window.addEventListener("resize", handleResize);
 
-    // Dark and Light Mode on Switch Click
-    const toggleDarkMode = () => {
-      document.documentElement.classList.toggle("darkmode");
-      document.body.classList.toggle("darkmode");
-    };
-
-    darkSwitch?.addEventListener("click", toggleDarkMode);
-
-    // Cleanup on unmount
     return () => {
       window.removeEventListener("resize", handleResize);
-      darkSwitch?.removeEventListener("click", toggleDarkMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = (event: Event) => {
+      event.preventDefault();
+      const target = event.target as HTMLElement;
+      const targetId = target.getAttribute("href");
+      if (targetId) {
+        const element = document.querySelector(targetId);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+    };
+
+    const scrollLinks = document.querySelectorAll(".menu-link");
+    scrollLinks.forEach((link) => {
+      link.addEventListener("click", handleScroll);
+    });
+
+    return () => {
+      scrollLinks.forEach((link) => {
+        link.removeEventListener("click", handleScroll);
+      });
     };
   }, []);
 
@@ -126,10 +140,11 @@ export default function CarouselCustomNavigation() {
 
   return (
     <>
+      {/* --------------------------------------------------------------------Start of Header---------------------------------------------------- */}
       <header className="header" id="header">
         <nav className="navbar container">
-          <a href="#" className="brand">
-            LOGO
+          <a href="/" className="brand">
+            <Image src={"/billo-logo.jpeg"} width={60} height={60} alt="logo" />
           </a>
           <div className="burger" id="burger">
             <span className="burger-line"></span>
@@ -139,22 +154,27 @@ export default function CarouselCustomNavigation() {
           <div className="menu" id="menu">
             <ul className="menu-inner">
               <li className="menu-item">
-                <a href="#" className="menu-link">
+                <a href="#home" className="menu-link">
                   Home
                 </a>
               </li>
               <li className="menu-item">
-                <a href="#" className="menu-link">
+                <a href="#counter" className="menu-link">
                   About Us
                 </a>
               </li>
               <li className="menu-item">
-                <a href="#" className="menu-link">
+                <a href="#services" className="menu-link">
+                  Services
+                </a>
+              </li>
+              <li className="menu-item">
+                <a href="#success-stories" className="menu-link">
                   Success Stories
                 </a>
               </li>
               <li className="menu-item">
-                <a href="#" className="menu-link">
+                <a href="#blog" className="menu-link">
                   Blog
                 </a>
               </li>
@@ -166,9 +186,11 @@ export default function CarouselCustomNavigation() {
           </button>
         </nav>
       </header>
+      {/* -----------------------------------------------------------End of Header--------------------------------------------------------------------- */}
 
+      {/* -----------------------------------------------------------Start of Hero Section------------------------------------------------------------- */}
       <div className="main">
-        <section className="section banner banner-section">
+        <section id="home" className="section banner banner-section">
           <div className="container banner-column flex flex-col md:flex-row lg:gap-24">
             <Image
               className="banner-image rounded"
@@ -187,23 +209,27 @@ export default function CarouselCustomNavigation() {
                 Experience the difference with our personalized approach and
                 commitment to excellence.
               </p>
-              <button className="btn btn-darken btn-inline mt-3">
-                Get Started &rarr;
-              </button>
+              <Link href={"/contact-us"}>
+                <button className="btn btn-darken btn-inline mt-3">
+                  Send us a message <span className="arrow">&rarr;</span>
+                </button>
+              </Link>
             </div>
           </div>
         </section>
       </div>
+      {/* --------------------------------------------------------End of Hero Section------------------------------------------------------------------- */}
 
+      {/* --------------------------------------------------------Start of About Section---------------------------------------------------------------- */}
       <section id="counter" className="mt-20 flex justify-center items-center">
         <div className="flex flex-col lg:flex-row max-w-7xl gap-5">
           <div className="flex flex-col lg:flex-1 lg:grid lg:grid-cols-2 lg:grid-rows-3 gap-5 px-5 col-span-2 row-start-1 row-end-2">
             <div className="lg:col-span-2">
               <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-black my-4">
-                About Talent Pool
+                About Billo Empire
               </h1>
               <p className={`${poppins.className} text-black`}>
-                Talent Pool is dedicated to connecting top talent with premier
+                Billo Empire is dedicated to connecting top talent with premier
                 employers in Ghana. Our mission is to create successful
                 partnerships that drive growth and innovation, ensuring a
                 perfect match every time.
@@ -214,52 +240,69 @@ export default function CarouselCustomNavigation() {
             >
               <div className="flex gap-2">
                 <svg
-                  fill="#000000"
+                  fill="#F9C94F"
                   version="1.1"
-                  id="Capa_1"
+                  id="Layer_1"
+                  width={50}
+                  height={50}
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
-                  width="30px"
-                  height="30px"
-                  viewBox="0 0 47.001 47.001"
+                  viewBox="0 0 496 496"
                   xmlSpace="preserve"
                 >
                   <g>
-                    <g id="Layer_1_65_">
+                    <g>
                       <g>
                         <path
-                          d="M46.907,20.12c-0.163-0.347-0.511-0.569-0.896-0.569h-2.927C41.223,9.452,32.355,1.775,21.726,1.775
-				C9.747,1.775,0,11.522,0,23.501C0,35.48,9.746,45.226,21.726,45.226c7.731,0,14.941-4.161,18.816-10.857
-				c0.546-0.945,0.224-2.152-0.722-2.699c-0.944-0.547-2.152-0.225-2.697,0.72c-3.172,5.481-9.072,8.887-15.397,8.887
-				c-9.801,0-17.776-7.974-17.776-17.774c0-9.802,7.975-17.776,17.776-17.776c8.442,0,15.515,5.921,17.317,13.825h-2.904
-				c-0.385,0-0.732,0.222-0.896,0.569c-0.163,0.347-0.11,0.756,0.136,1.051l4.938,5.925c0.188,0.225,0.465,0.355,0.759,0.355
-				c0.293,0,0.571-0.131,0.758-0.355l4.938-5.925C47.018,20.876,47.07,20.467,46.907,20.12z"
+                          d="M432,336h-10.84c16.344-13.208,26.84-33.392,26.84-56v-32c0-30.872-25.128-56-56-56h-32c-2.72,0-5.376,0.264-8,0.64V48
+				h16V0H0v48h16v232H0v48h187.056l40,80H304v88h192v-96C496,364.712,467.288,336,432,336z M422.584,371.328l-32.472,13.92
+				L412.28,352h5.472L422.584,371.328z M358.944,352h34.112L376,377.576L358.944,352z M361.872,385.248l-32.472-13.92L334.24,352
+				h5.472L361.872,385.248z M432.008,280C432,310.872,406.872,336,376,336s-56-25.128-56-56h37.424
+				c14.12,0,27.392-5.504,37.368-15.48l4.128-4.128c8.304,10.272,20.112,16.936,33.088,18.92V280z M48,192v72h107.176
+				c0.128,0.28,0.176,0.584,0.312,0.856L163.056,280H32V48h304v149.48c-18.888,9.008-32,28.24-32,50.52v32h-65.064l-24.816-46.528
+				C208.368,222.696,197.208,216,185,216c-10.04,0-18.944,4.608-25,11.712V192H48z M144,208v40H64v-40H144z M360,208h32
+				c22.056,0,40,17.944,40,40v15.072c-9.168-2.032-17.32-7.48-22.656-15.48l-8.104-12.152l-17.768,17.768
+				c-6.96,6.96-16.208,10.792-26.048,10.792H320v-16C320,225.944,337.944,208,360,208z M16,16h336v16H16V16z M16,312v-16h155.056
+				l8,16H16z M256,392h-19.056L169.8,257.712c-1.176-2.36-1.8-4.992-1.8-7.608V249c0-9.376,7.624-17,17-17c6.288,0,12.04,3.456,15,9
+				l56,104.992V392z M247.464,296h58.392c1.28,5.616,3.232,10.968,5.744,16H256L247.464,296z M264.536,328h57.952
+				c2.584,2.872,5.352,5.568,8.36,8H268.8L264.536,328z M480,480h-32v-32h32V480z M480,432h-32v-32h-16v80H320v-88h-48v-40h45.76
+				l-7.168,28.672L376,408.704l65.416-28.032l-7.144-28.56C459.68,353.312,480,374.296,480,400V432z"
                         />
                         <path
-                          d="M21.726,6.713c-1.091,0-1.975,0.884-1.975,1.975v11.984c-0.893,0.626-1.481,1.658-1.481,2.83
-				c0,1.906,1.551,3.457,3.457,3.457c0.522,0,1.014-0.125,1.458-0.334l6.87,3.965c0.312,0.181,0.65,0.266,0.986,0.266
-				c0.682,0,1.346-0.354,1.712-0.988c0.545-0.943,0.222-2.152-0.724-2.697l-6.877-3.971c-0.092-1.044-0.635-1.956-1.449-2.526V8.688
-				C23.701,7.598,22.816,6.713,21.726,6.713z M21.726,24.982c-0.817,0-1.481-0.665-1.481-1.48c0-0.816,0.665-1.481,1.481-1.481
-				s1.481,0.665,1.481,1.481C23.207,24.317,22.542,24.982,21.726,24.982z"
+                          d="M160,128v-16h-16.808c-1.04-5.096-3.072-9.832-5.856-14.024l11.92-11.92l-11.312-11.312l-11.92,11.92
+				c-4.192-2.784-8.928-4.816-14.024-5.856V64H96v16.808c-5.096,1.04-9.832,3.072-14.024,5.856l-11.92-11.92L58.744,86.056
+				l11.92,11.92c-2.784,4.192-4.816,8.928-5.856,14.024H48v16h16.808c1.04,5.096,3.072,9.832,5.856,14.024l-11.92,11.92
+				l11.312,11.312l11.92-11.92c4.192,2.784,8.928,4.816,14.024,5.856V176h16v-16.808c5.096-1.04,9.832-3.072,14.024-5.856
+				l11.92,11.92l11.312-11.312l-11.92-11.92c2.784-4.192,4.816-8.928,5.856-14.024H160z M104,144c-13.232,0-24-10.768-24-24
+				s10.768-24,24-24s24,10.768,24,24S117.232,144,104,144z"
                         />
+                        <polygon points="244.28,80 272,80 272,64 235.72,64 203.72,112 176,112 176,128 212.28,128 			" />
+                        <rect x="288" y="64" width="32" height="16" />
+                        <path d="M224,144h-48v48h48V144z M208,176h-16v-16h16V176z" />
+                        <rect x="240" y="160" width="32" height="16" />
+                        <rect x="288" y="160" width="32" height="16" />
                       </g>
                     </g>
                   </g>
                 </svg>
                 <span
-                  className="text-black text-2xl font-bold mb-4 count"
-                  data-count="14"
+                  className="text-[#F9C94F] text-2xl font-bold mb-4 count"
+                  data-count="1500"
                 >
                   0
+                </span>
+                <span className="text-2xl font-bold ml-0 text-[#F9C94F]">
+                  +
                 </span>{" "}
                 <span className="text-black text-2xl font-bold mb-4">
-                  years
+                  candidates
                 </span>
               </div>
               <p className={`text-black/50 text-md ${poppins.className}`}>
-                Since our founding in 2010, we have successfully placed
-                thousands of candidates, adapting to the evolving job market to
-                meet the unique needs of both candidates and companies.
+                Our training center equips over 1,500 professionals yearly with
+                practical skills in key industries such as catering, mechanics,
+                electricians, solar technology, HVAC (air conditioning &
+                refrigeration), and cosmetology.
               </p>
             </div>
             <div className={`col-start-2 ${poppins.className}`}>
@@ -278,12 +321,12 @@ export default function CarouselCustomNavigation() {
                     <g>
                       <g>
                         <path
-                          style={{ fill: "#090509" }}
+                          style={{ fill: "#F9C94F" }}
                           d="M10.461,1.079L9.598,4.294L9.809,0.23c-1.193-0.517-2.236,0-2.236,0l0.211,4.064L6.923,1.079
 				C4.526,1.746,3.007,3.698,3.007,6.307h11.372C14.379,3.698,12.859,1.746,10.461,1.079z"
                         />
                         <path
-                          style={{ fill: "#090509" }}
+                          style={{ fill: "#F9C94F" }}
                           d="M15.491,6.773H2.03v1.076h1.477L3.5,8.209c0,0.001,0.001,0.126,0,0.201
 				c-0.089,0.275-0.064,0.45,0.179,1.737c-0.027,0.027-0.053,0.056-0.077,0.088c-0.349,0.464-0.176,1.339-0.036,1.839
 				c0.073,0.442,0.241,0.733,0.4,0.915c0.403,2.429,2.531,4.531,4.618,4.531c2.219,0,4.428-2.058,4.887-4.523
@@ -296,10 +339,13 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-2xl font-bold mb-4 count"
-                  data-count="5000"
+                  className="text-[#F9C94F] text-2xl font-bold mb-4 count"
+                  data-count="800"
                 >
                   0
+                </span>
+                <span className="text-2xl font-bold ml-0 text-[#F9C94F]">
+                  +
                 </span>{" "}
                 <span className="text-black text-2xl font-bold mb-4">
                   candidates
@@ -307,15 +353,15 @@ export default function CarouselCustomNavigation() {
               </div>
 
               <p className={`text-black/50 text-md ${poppins.className}`}>
-                Our personalized approach and commitment to excellence have made
-                us a trusted name in the recruitment industry, helping
-                businesses thrive with the right talent.
+                Our forklift and crane department trains over 800 professionals
+                annually, delivering practical, safety-focused skills to meet
+                global operational and industry demands.
               </p>
             </div>
             <div className={`col-span-1 ${poppins.className}`}>
               <div className="flex gap-1">
                 <svg
-                  fill="#000000"
+                  fill="#F9C94F"
                   height="30px"
                   width="30px"
                   version="1.1"
@@ -346,7 +392,7 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-2xl font-bold mb-4 count"
+                  className="text-[#F9C94F] text-2xl font-bold mb-4 count"
                   data-count="4"
                 >
                   0
@@ -364,7 +410,7 @@ export default function CarouselCustomNavigation() {
             <div className={`col-start-2 ${poppins.className}`}>
               <div className="flex gap-1">
                 <svg
-                  fill="#000000"
+                  fill="#F9C94F"
                   xmlns="http://www.w3.org/2000/svg"
                   width="40px"
                   height="40px"
@@ -404,7 +450,7 @@ export default function CarouselCustomNavigation() {
                   </g>
                 </svg>
                 <span
-                  className="text-black text-2xl font-bold mb-4 count"
+                  className="text-[#F9C94F] text-2xl font-bold mb-4 count"
                   data-count="3"
                 >
                   0
@@ -415,10 +461,11 @@ export default function CarouselCustomNavigation() {
               </div>
 
               <p className={`text-black/50 text-md ${poppins.className}`}>
-                Our dedicated team consists of experienced professionals like
-                John Doe, our CEO, who leads with a passion for connecting
-                talent with opportunity, and Jane Smith, our Recruitment
-                Specialist, who excels in understanding client needs.
+                Our dedicated team is led by CEO Nicholas Agbelordzi, who is
+                passionate about connecting talent with opportunity, and
+                Recruitment Specialist Gideon Adonteng, who excels at
+                understanding client needs and delivering tailored recruitment
+                solutions to meet those requirements effectively.
               </p>
             </div>
           </div>
@@ -443,7 +490,7 @@ export default function CarouselCustomNavigation() {
           <div className="grid grid-rows-2 grid-cols-2 gap-4">
             <div className=" col-span-2">
               <p className={`text-black ${poppins.className}`}>
-                Talent Pool offers a range of recruitment services tailored to
+                Billo Empire offers a range of recruitment services tailored to
                 connect top talent with leading employers. Our personalized
                 approach ensures a perfect match for every client.{" "}
               </p>
@@ -469,6 +516,9 @@ export default function CarouselCustomNavigation() {
           </div>
         </div>
       </section>
+      {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
+
+      {/* ------------------------------------------------------Start of Services Section--------------------------------------------------------------- */}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#F9C94F"
@@ -477,16 +527,19 @@ export default function CarouselCustomNavigation() {
         ></path>
       </svg>
 
-      <section className="bg-[#F9C94F] mt-0 flex flex-col justify-center items-center">
+      <section
+        id="services"
+        className="bg-[#F9C94F] mt-0 flex flex-col justify-center items-center"
+      >
         <div className="max-w-7xl mb-10 px-5">
           <div className="flex flex-col md:flex-row gap-4 mb-16 ">
             <div>
               <h1 className="sm:text-4xl text-3xl font-extrabold text-base-content text-black">
-                Why Choose Talent Pool for Your Recruitment Needs
+                Why Choose Billo Empire for Your Recruitment Needs
               </h1>
             </div>
             <div className={`text-black ${poppins.className}`}>
-              Talent Pool is your trusted partner in recruitment, offering
+              Billo Empire is your trusted partner in recruitment, offering
               unparalleled access to top talent and a personalized approach to
               meet your unique needs. Our streamlined hiring process saves time
               and resources, ensuring a perfect match every time.
@@ -504,7 +557,7 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-black font-semibold text-xl">
+                <strong className="text-black font-extrabold text-base-content text-xl">
                   Access to Top Talent Across Industries
                 </strong>
                 <p className="my-4 text-black">
@@ -512,9 +565,9 @@ export default function CarouselCustomNavigation() {
                   candidates, ensuring you find the perfect fit for your
                   organization.
                 </p>
-                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
+                {/* <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
-                </button>
+                </button> */}
               </div>
             </div>
             <div>
@@ -528,16 +581,16 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-black font-semibold text-lg">
+                <strong className="text-black font-extrabold text-base-content text-xl">
                   Efficient and Streamlined Hiring Process
                 </strong>
                 <p className="my-4 text-black">
                   We utilize innovative strategies to make the hiring process
                   efficient, saving you valuable time and resources.
                 </p>
-                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
+                {/* <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
-                </button>
+                </button> */}
               </div>
             </div>
             <div>
@@ -551,7 +604,7 @@ export default function CarouselCustomNavigation() {
                 />
               </div>
               <div>
-                <strong className="text-black font-semibold text-xl">
+                <strong className="text-black font-extrabold text-base-content text-xl">
                   Personalized Recruitment Solutions
                 </strong>
                 <p className="my-4 text-black">
@@ -559,15 +612,21 @@ export default function CarouselCustomNavigation() {
                   needs, providing expert guidance throughout your recruitment
                   journey.
                 </p>
-                <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
+                {/* <button className=" px-5 py-3 hover:bg-black rounded-md text-black hover:text-white">
                   Learn more
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center py-10 px-5 mb-20">
+      {/* --------------------------------------------------------------End of Services Section-------------------------------------------------- */}
+
+      {/* --------------------------------------------------------------Start of Success Stories Section----------------------------------------- */}
+      <section
+        id="success-stories"
+        className="flex flex-col justify-center items-center py-10 px-5 mb-20"
+      >
         <div className=" mb-6">
           <h1 className="text-3xl md:text-5xl text-black font-extrabold">
             Client Success Stories
@@ -575,7 +634,7 @@ export default function CarouselCustomNavigation() {
         </div>
         <div>
           <p className={`text-black/50 ${poppins.className}`}>
-            <span className="font-semibold">
+            <span className="font-semibold text-blue-500">
               Hear from our satisfied clients
             </span>{" "}
             who found their perfect match through our dedicated services.
@@ -590,11 +649,15 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
-                efficiently. Their understanding of our needs was impressive!
+              <p className="text-sm mb-3">
+                I am Pastor Matthew, a proud graduate of Billow Empire and an
+                ordained minister of the Gospel Of Our Lord Jesus Christ. With
+                their training, I became a certified forklift and crane
+                operator, now working successfully in Saudi Arabia. Thanks to
+                Billow Empire!
               </p>
               <div className="flex gap-3">
                 <Image
@@ -608,9 +671,11 @@ export default function CarouselCustomNavigation() {
                   <strong
                     className={`text-extrabold text-white ${poppins.className}`}
                   >
-                    Kwame Asante
+                    Pastor Matthew
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">
+                    Minister of the Gospel Of Our Lord Jesus Christ
+                  </h4>
                 </div>
               </div>
             </div>
@@ -619,11 +684,14 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
-                efficiently. Their understanding of our needs was impressive!
+              <p className="text-sm mb-3">
+                I&apos;m thrilled to share that I, Wisdom Anyomi, have secured
+                an exciting opportunity in Europe, Australia thanks to my
+                training in Crane and Forklift Operations from BILLO EMPIRE in
+                collaboration with BON BOSCO TRAINING INSTITUTE!
               </p>
               <div className="flex gap-3">
                 <Image
@@ -637,9 +705,9 @@ export default function CarouselCustomNavigation() {
                   <strong
                     className={`text-extrabold text-white ${poppins.className}`}
                   >
-                    Kwame Asante
+                    Wisdom Anyomi
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">@wisdomanyomi</h4>
                 </div>
               </div>
             </div>
@@ -648,11 +716,15 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
-                efficiently. Their understanding of our needs was impressive!
+              <p className="text-sm mb-3">
+                I&apos;m Nana Boateng; a crane operator in Bin Quraya Holdings
+                Saudi Arabia. Through the help of BILLO EMPIRE training and
+                assistance of interview and recruitment, I was able to gain
+                employment in Saudi Arabia. Currently working with BQ holdings
+                in Dammam, Saudi Arabia. Thank you BILLO EMPIRE 😘
               </p>
               <div className="flex gap-3">
                 <Image
@@ -666,9 +738,9 @@ export default function CarouselCustomNavigation() {
                   <strong
                     className={`text-extrabold text-white ${poppins.className}`}
                   >
-                    Kwame Asante
+                    Nana Boateng
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">@nanaboateng</h4>
                 </div>
               </div>
             </div>
@@ -677,11 +749,16 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
-                efficiently. Their understanding of our needs was impressive!
+              <p className="text-sm mb-3">
+                My name is Clement Tetteh Noye, and I&apos;m a proud alumnus of
+                Billo Global Empire. I&apos;m excited to share my success story
+                and the opportunities that await you at Billo Global Empire.
+                Thanks to Billo Global Empire, I secured a lucrative contract as
+                a Crane Operator with BIN QURAYA under Saudi Aramco in Saudi
+                Arabia.
               </p>
               <div className="flex gap-3">
                 <Image
@@ -695,9 +772,9 @@ export default function CarouselCustomNavigation() {
                   <strong
                     className={`text-extrabold text-white ${poppins.className}`}
                   >
-                    Kwame Asante
+                    Clement Tetteh Noye
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">@ClementNoye</h4>
                 </div>
               </div>
             </div>
@@ -706,10 +783,11 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
+              <p className="text-sm mb-3">
+                Billo Empire helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
               <div className="flex gap-3">
@@ -726,7 +804,7 @@ export default function CarouselCustomNavigation() {
                   >
                     Kwame Asante
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">HR manager at Fintech Gh</h4>
                 </div>
               </div>
             </div>
@@ -735,10 +813,11 @@ export default function CarouselCustomNavigation() {
                 src={"/rating.png"}
                 width={120}
                 height={0}
+                className="h-10"
                 alt="five stars rating"
               />
-              <p className="text-sm">
-                Talent Pool helped us find the right talent quickly and
+              <p className="text-sm mb-3">
+                Billo Empire helped us find the right talent quickly and
                 efficiently. Their understanding of our needs was impressive!
               </p>
               <div className="flex gap-3">
@@ -755,15 +834,20 @@ export default function CarouselCustomNavigation() {
                   >
                     Kwame Asante
                   </strong>
-                  <h4>HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">HR manager at Fintech Gh</h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      {/* ---------------------------------------------------------End of Success Stories Section------------------------------------------------- */}
 
-      <section className="flex flex-col justify-center items-center px-5">
+      {/* ---------------------------------------------------------Start of Blog Section------------------------------------------------- */}
+      <section
+        id="blog"
+        className="flex flex-col justify-center items-center px-5"
+      >
         <div className="flex flex-col lg:grid lg:grid-cols-2 lg:.latest-insights_grid gap-10 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between col-span-2">
             <div className="flex flex-col gap-4">
@@ -798,7 +882,7 @@ export default function CarouselCustomNavigation() {
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
-              <p className="text-black text-sm">Read more</p>
+              <p className="text-black text-sm cursor-pointer">Read more</p>
             </div>
           </div>
           <div className="flex">
@@ -817,7 +901,7 @@ export default function CarouselCustomNavigation() {
                 Discover why networking is a vital component of a successful job
                 search.
               </p>
-              <p className="text-black text-sm">Read more</p>
+              <p className="text-black text-sm cursor-pointer">Read more</p>
             </div>
           </div>
           <div className="flex">
@@ -836,7 +920,7 @@ export default function CarouselCustomNavigation() {
                 Get ready for your next interview with these essential
                 preparation tips.
               </p>
-              <p className="text-black text-sm">Read more</p>
+              <p className="text-black text-sm cursor-pointer">Read more</p>
             </div>
           </div>
           <div className="flex">
@@ -855,13 +939,17 @@ export default function CarouselCustomNavigation() {
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
-              <p className="text-black text-sm">Read more</p>
+              <p className="text-black text-sm cursor-pointer">Read more</p>
             </div>
           </div>
         </div>
       </section>
       <section>
+        {/* ---------------------------------------------------------End of Blog Section------------------------------------------------- */}
+
+        {/* ---------------------------------------------------------Start of FAQ Section------------------------------------------------- */}
         <FAQ />
+        {/* ---------------------------------------------------------End of FAQ Section------------------------------------------------- */}
       </section>
       <section className="flex justify-center items-center px-5 lg:grid lg:grid-cols-10">
         <div className="max-w-7xl items-start flex flex-col gap-4 lg:col-start-3 lg:col-end-8">
@@ -871,23 +959,15 @@ export default function CarouselCustomNavigation() {
           <p className={`text-black/50 ${poppins.className}`}>
             Connect with us to find the best talent for your organization.
           </p>
-          <button
-            className={`${poppins.className} px-5 py-3 bg-[#F9C94F] rounded`}
-          >
-            Contact Us
-          </button>
+          <a href="/contact-us">
+            <button
+              className={`${poppins.className} px-5 py-3 bg-[#F9C94F] rounded hover:bg-[#f7c037]`}
+            >
+              Contact Us
+            </button>
+          </a>
         </div>
       </section>
-
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#F9C94F"
-          fillOpacity="1"
-          d="M0,288L26.7,293.3C53.3,299,107,309,160,304C213.3,299,267,277,320,250.7C373.3,224,427,192,480,181.3C533.3,171,587,181,640,170.7C693.3,160,747,128,800,144C853.3,160,907,224,960,256C1013.3,288,1067,288,1120,288C1173.3,288,1227,288,1280,293.3C1333.3,299,1387,309,1413,314.7L1440,320L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
-        ></path>
-      </svg>
-
-      <Footer />
     </>
   );
 }
