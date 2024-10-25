@@ -783,3 +783,7 @@ body.darkmode .back-to-top {
     width: 100%;
   }
 }
+
+.blog_-hero_height {
+  height: 70vh;
+}

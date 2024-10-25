@@ -201,7 +201,7 @@ export default function CarouselCustomNavigation() {
             />
             <div className="banner-inner">
               <h1 className="heading-xl font-extrabold text-base-content">
-                Connecting Talent with Opportunity
+                Bridging Talent and Opportunity for a Brighter Future.
               </h1>
               <p className={`${poppins.className} paragraph text-black/50`}>
                 Discover Ghana&apos;s premier recruitment agency. We specialize
@@ -461,11 +461,12 @@ export default function CarouselCustomNavigation() {
               </div>
 
               <p className={`text-black/50 text-md ${poppins.className}`}>
-                Our dedicated team is led by CEO Nicholas Agbelordzi, who is
-                passionate about connecting talent with opportunity, and
-                Recruitment Specialist Gideon Adonteng, who excels at
-                understanding client needs and delivering tailored recruitment
-                solutions to meet those requirements effectively.
+                Our team is led by CEO Nicholas Agbelordzi, who is committed to
+                connecting talent with opportunity, Recruitment Specialist
+                Gideon Adonteng, who excels at delivering tailored solutions and
+                Consultant Pastor Chris Bashiru provides expert guidance,
+                ensuring effective recruitment strategies for both employers and
+                job seekers.
               </p>
             </div>
           </div>
@@ -873,7 +874,7 @@ export default function CarouselCustomNavigation() {
               <strong
                 className={`${poppins.className} text-black font-extrabold text-md md:text-3xl`}
               >
-                Top Recruitment Trends in 2023
+                Top Recruitment Trends in 2024
               </strong>
 
               <p
@@ -882,7 +883,11 @@ export default function CarouselCustomNavigation() {
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
-              <p className="text-black text-sm cursor-pointer">Read more</p>
+              <Link href={"/blog/top-recruitment-trends"}>
+                <p className="text-black text-sm cursor-pointer">
+                  Read more &rarr;
+                </p>
+              </Link>
             </div>
           </div>
           <div className="flex">
@@ -901,7 +906,11 @@ export default function CarouselCustomNavigation() {
                 Discover why networking is a vital component of a successful job
                 search.
               </p>
-              <p className="text-black text-sm cursor-pointer">Read more</p>
+              <Link href={"/blog/networking-in-job-search"}>
+                <p className="text-black text-sm cursor-pointer">
+                  Read more &rarr;
+                </p>
+              </Link>
             </div>
           </div>
           <div className="flex">
@@ -920,7 +929,9 @@ export default function CarouselCustomNavigation() {
                 Get ready for your next interview with these essential
                 preparation tips.
               </p>
-              <p className="text-black text-sm cursor-pointer">Read more</p>
+              <Link href={"/blog/interview-tips"}>
+                <p className="text-black text-sm cursor-pointer">Read more</p>
+              </Link>
             </div>
           </div>
           <div className="flex">
@@ -939,7 +950,11 @@ export default function CarouselCustomNavigation() {
                 Explore the latest trends shaping the recruitment landscape this
                 year.
               </p>
-              <p className="text-black text-sm cursor-pointer">Read more</p>
+              <Link href={"/blog/career-tips"}>
+                <p className="text-black text-sm cursor-pointer">
+                  Read more &rarr;
+                </p>
+              </Link>
             </div>
           </div>
         </div>

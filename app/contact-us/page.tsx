@@ -185,6 +185,8 @@ export default function ContactUs() {
                 <div className="contact-info-content">
                   <h4>Phone</h4>
                   <p>+233-59-603-8506</p>
+                  <p>+233-50-030-3230</p>
+                  <p>+233-54-801-3258</p>
                 </div>
               </div>
 
