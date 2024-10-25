@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
-import { BlogPostCareerTips, BlogPostInterviewTips } from "@/constant";
+import { BlogPostCareerTips } from "@/constant";
 
 const poppins = localFont({
   src: "../../fonts/Poppins-Medium.ttf",
