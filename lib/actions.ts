@@ -1,7 +1,7 @@
-const apiUrl =
-  process.env.NODE_ENV === "production"
-    ? process.env.SERVER_URL
-    : "http://localhost:3000";
+// const apiUrl =
+//   process.env.NODE_ENV === "production"
+//     ? process.env.SERVER_URL
+//     : "http://localhost:3000";
 
 export const sendEmail = async (
   emailFrom: string | undefined,
@@ -9,7 +9,7 @@ export const sendEmail = async (
   message: string
 ) => {
   console.log(emailFrom, subject, message);
-  const endpoint = `${apiUrl}/api/mailgun`;
+  const endpoint = `https://billo-empire.vercel.app/api/mailgun`;
 
   try {
     const res = await fetch(endpoint, {
