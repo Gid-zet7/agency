@@ -246,8 +246,9 @@ export default function ContactUs() {
                     required={true}
                     name="emailFrom"
                     onChange={(e) => setEmail(e.target.value)}
+                    placeholder="email"
                   />
-                  <span>Email</span>
+                  {/* <span>Email</span> */}
                 </div>
 
                 <div className="input-box">
@@ -256,8 +257,9 @@ export default function ContactUs() {
                     required={true}
                     name="subject"
                     onChange={(e) => setSubject(e.target.value)}
+                    placeholder="subject"
                   />
-                  <span>Subject</span>
+                  {/* <span>Subject</span> */}
                 </div>
 
                 <div className="input-box">
@@ -265,8 +267,9 @@ export default function ContactUs() {
                     required={true}
                     name="message"
                     onChange={(e) => setMessage(e.target.value)}
+                    placeholder="type your message..."
                   ></textarea>
-                  <span>Type your Message...</span>
+                  {/* <span>Type your Message...</span> */}
                 </div>
 
                 <div className="input-box ">

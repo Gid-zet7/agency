@@ -9,7 +9,7 @@ const poppins = localFont({
   weight: "100 900",
 });
 
-export default function TopRecruitmentTrends() {
+export default function Networking() {
   return (
     <>
       <header className="header" id="header">
@@ -68,7 +68,7 @@ export default function TopRecruitmentTrends() {
           </h1>
           <div className="flex gap-3">
             <Image
-              src={"/ludvig-wiese.jpg"}
+              src={"/my-image.jpeg"}
               width={60}
               height={60}
               alt="client image"

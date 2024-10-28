@@ -13,7 +13,7 @@ const poppins = localFont({
   weight: "100 900",
 });
 
-export default function CarouselCustomNavigation() {
+export default function Home() {
   const [counted, setCounted] = useState(false);
 
   useEffect(() => {
@@ -193,7 +193,7 @@ export default function CarouselCustomNavigation() {
         <section id="home" className="section banner banner-section">
           <div className="container banner-column flex flex-col md:flex-row lg:gap-24">
             <Image
-              className="banner-image rounded"
+              className="banner-image rounded justify-self-center"
               width={380}
               height={380}
               alt="connect"
@@ -203,7 +203,9 @@ export default function CarouselCustomNavigation() {
               <h1 className="heading-xl font-extrabold text-base-content">
                 Bridging Talent and Opportunity for a Brighter Future.
               </h1>
-              <p className={`${poppins.className} paragraph text-black/50`}>
+              <p
+                className={`${poppins.className} paragraph text-sm md:text-lg text-black/50`}
+              >
                 Discover Ghana&apos;s premier recruitment agency. We specialize
                 in matching exceptional talent with leading employers.
                 Experience the difference with our personalized approach and
@@ -230,9 +232,9 @@ export default function CarouselCustomNavigation() {
               </h1>
               <p className={`${poppins.className} text-black`}>
                 Billo Empire is dedicated to connecting top talent with premier
-                employers in Ghana. Our mission is to create successful
-                partnerships that drive growth and innovation, ensuring a
-                perfect match every time.
+                employers in Ghana and around the globe. Our mission is to
+                create successful partnerships that drive growth and innovation,
+                ensuring a perfect match every time.
               </p>
             </div>
             <div
@@ -358,7 +360,7 @@ export default function CarouselCustomNavigation() {
                 global operational and industry demands.
               </p>
             </div>
-            <div className={`col-span-1 ${poppins.className}`}>
+            <div className={`col-start-2 ${poppins.className}`}>
               <div className="flex gap-1">
                 <svg
                   fill="#F9C94F"
@@ -407,13 +409,13 @@ export default function CarouselCustomNavigation() {
                 clients and candidates.
               </p>
             </div>
-            <div className={`col-start-2 ${poppins.className}`}>
+            <div className={`col-span-1 row-start-3 ${poppins.className}`}>
               <div className="flex gap-1">
                 <svg
                   fill="#F9C94F"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="40px"
-                  height="40px"
+                  width="45px"
+                  height="45px"
                   viewBox="0 0 100 100"
                   xmlSpace="preserve"
                 >
@@ -462,11 +464,10 @@ export default function CarouselCustomNavigation() {
 
               <p className={`text-black/50 text-md ${poppins.className}`}>
                 Our team is led by CEO Nicholas Agbelordzi, who is committed to
-                connecting talent with opportunity, Recruitment Specialist
-                Gideon Adonteng, who excels at delivering tailored solutions and
-                Consultant Pastor Chris Bashiru provides expert guidance,
-                ensuring effective recruitment strategies for both employers and
-                job seekers.
+                connecting talent with opportunity. Recruitment Specialist
+                Gideon Adonteng who delivers customized, effective talent
+                acquisition solutions, and Consultant Pastor Chris Bashiru
+                offers expert guidance for both employers and job seekers.
               </p>
             </div>
           </div>
@@ -788,8 +789,13 @@ export default function CarouselCustomNavigation() {
                 alt="five stars rating"
               />
               <p className="text-sm mb-3">
-                Billo Empire helped us find the right talent quickly and
-                efficiently. Their understanding of our needs was impressive!
+                My name is Elikem Goka, through the help of BILLO EMPIRE
+                training, assistance, and their recruitment I was able to get a
+                job in BIN QURAYA CO LTD, Saudi Arabia. I feel like words
+                aren&apos;t enough to express my gratitude for all their effort
+                and guidance for helping me. I appreciate everything
+                they&apos;ve done just for me to achieve my goals. God bless
+                BILLO EMPIRE. 🙏
               </p>
               <div className="flex gap-3">
                 <Image
@@ -803,9 +809,9 @@ export default function CarouselCustomNavigation() {
                   <strong
                     className={`text-extrabold text-white ${poppins.className}`}
                   >
-                    Kwame Asante
+                    Elikem Goka
                   </strong>
-                  <h4 className="text-sm">HR manager at Fintech Gh</h4>
+                  <h4 className="text-sm">@ElikemGoka</h4>
                 </div>
               </div>
             </div>

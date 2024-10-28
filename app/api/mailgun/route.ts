@@ -33,7 +33,7 @@ export const POST = async (request: Request) => {
     // Send email
     const result = await mg.messages.create(DOMAIN, {
       from: emailFrom,
-      to: "adontenggideon57@gmail.com",
+      to: ["adontenggideon57@gmail.com", "billoempire@gmail.com"],
       subject: subject,
       text: message,
       // html: message,

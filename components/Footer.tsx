@@ -76,13 +76,13 @@ const Footer = () => {
 
               <div className="flex flex-col lg:flex-row gap-4 text-black md:hidden">
                 <li className="list_item">
-                  <a href={"/"} className="text-black">
+                  <a href={"/terms"} className="text-black">
                     Terms of Service
                   </a>
                 </li>
 
                 <li className="list_item">
-                  <a href={"#"} className="text-black">
+                  <a href={"/privacy-policy"} className="text-black">
                     Privacy policy
                   </a>
                 </li>
@@ -214,10 +214,7 @@ const Footer = () => {
                     />
                   </svg>
                 </a>
-                <a
-                  href="https://www.tiktok.com/@tillyn.clothings?is_from_webapp=1&sender_device=pc"
-                  target="_blank"
-                >
+                <a href="/" target="_blank">
                   <svg
                     width="20px"
                     height="18px"
@@ -243,13 +240,13 @@ const Footer = () => {
             </p>
             <div className="hidden lg:flex lg:flex-row gap-4 text-black">
               <span className="list_item">
-                <a href={"/"} className="text-black">
+                <a href={"/terms"} className="text-black">
                   Terms of Service
                 </a>
               </span>
 
               <span className="list_item">
-                <a href={"#"} className="text-black">
+                <a href={"/privacy-policy"} className="text-black">
                   Privacy policy
                 </a>
               </span>
