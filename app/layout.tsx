@@ -1,6 +1,7 @@
+import "./globals.css";
+import Script from "next/script";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import Footer from "@/components/Footer";
 
 const geistSans = localFont({
@@ -26,6 +27,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GHSM3HEK7D"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-GHSM3HEK7D');`}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

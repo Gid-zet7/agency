@@ -86,21 +86,6 @@ const Footer = () => {
                     Privacy policy
                   </a>
                 </li>
-                {/* <li className="list_item">
-                <a href={"#"} className="text-white">
-                  Services
-                </a>
-              </li>
-              <li className="list_item">
-                <a href={"#"} className="text-white">
-                  Success Stories
-                </a>
-              </li>
-              <li className="list_item">
-                <a href={"#"} className="text-white">
-                  Blog
-                </a>
-              </li> */}
               </div>
             </div>
 
