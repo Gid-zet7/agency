@@ -125,9 +125,9 @@ const TermsAndConditions = () => {
               1. Overview
             </h2>
             <p className={` ${poppins.className}  text-black`}>
-              These Terms of Service ("Terms") govern the use of Billo Empire
-              recruitment services. By accessing or using our services, clients
-              and candidates agree to these Terms
+              These Terms of Service (&quot;Terms&quot;) govern the use of Billo
+              Empire recruitment services. By accessing or using our services,
+              clients and candidates agree to these Terms
             </p>
           </div>
 
