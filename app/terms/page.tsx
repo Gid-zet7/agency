@@ -236,10 +236,7 @@ const TermsAndConditions = () => {
               will not share your personal information with third parties except
               as necessary to fulfill your order or as required by law. For more
               details, please review our{" "}
-              <a
-                className="text-blue-300"
-                href="https://www.tillyn.store/privacy-policy"
-              >
+              <a className="text-blue-300" href="/privacy-policy">
                 Privacy Policy
               </a>
               .

@@ -212,7 +212,7 @@ const PrivacyPolicy = () => {
             >
               8. Contact Us
             </h2>
-            <p className="text-black">
+            <p className={` ${poppins.className}  text-black`}>
               For inquiries or to exercise data rights, reach us at
               billoempire@gmail.com.
             </p>
