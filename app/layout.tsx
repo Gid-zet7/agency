@@ -16,7 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Billo Empire",
+  title:
+    "Billo Empire | Bridging Talent and Opportunity for a Brighter Future.",
   description: "Welcome to Billo Empire",
 };
 

@@ -161,9 +161,9 @@ export default function ContactUs() {
                 <div className="contact-info-content">
                   <h4>Address</h4>
                   <p>
-                    GB-013-4412,
-                    <br /> Tema, <br />
-                    Community 21
+                    {/* GB-013-4412, */}
+                    <br /> Halleluyah Junction, <br />
+                    Afienya-Mataheko Rd.
                   </p>
                 </div>
               </div>
@@ -182,11 +182,17 @@ export default function ContactUs() {
                   />
                 </svg>
 
-                <div className="contact-info-content">
+                <div className="contact-info-content flex flex-col">
                   <h4>Phone</h4>
-                  <p className="text-black">+233-59-603-8506</p>
-                  <p className="text-black">+233-50-030-3230</p>
-                  <p className="text-black">+233-54-801-3258</p>
+                  <a href="tel:+233-59-603-8506" className="text-black">
+                    +233-59-603-8506
+                  </a>
+                  <a href="tel:+233-50-030-3230" className="text-black">
+                    +233-50-030-3230
+                  </a>
+                  <a href="tel:+233-54-801-3258" className="text-black">
+                    +233-54-801-3258
+                  </a>
                 </div>
               </div>
 
@@ -223,7 +229,12 @@ export default function ContactUs() {
 
                 <div className="contact-info-content">
                   <h4>Email</h4>
-                  <p className="text-black/50">billoempire@gmail.com</p>
+                  <a
+                    href="mailto:billoempire@gmail.com"
+                    className="text-black/50"
+                  >
+                    billoempire@gmail.com
+                  </a>
                 </div>
               </div>
             </div>

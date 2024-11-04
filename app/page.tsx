@@ -598,7 +598,7 @@ export default function Home() {
             <div>
               <div className="mb-4">
                 <Image
-                  src={"/evangeline-shaw.jpg"}
+                  src={"/group.jpeg"}
                   width={400}
                   height={500}
                   alt="brainstorming group image"
@@ -663,11 +663,11 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/lucas-gouvea.jpg"}
+                  src={"/pastor.jpeg"}
                   width={40}
                   height={40}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong
@@ -697,11 +697,11 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/erik-lucatero.jpg"}
+                  src={"/wisdom.jpeg"}
                   width={60}
                   height={60}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong
@@ -730,11 +730,11 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/headshot.jpg"}
+                  src={"/boateng.jpeg"}
                   width={60}
                   height={60}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong
@@ -768,7 +768,7 @@ export default function Home() {
                   width={60}
                   height={60}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong
@@ -803,7 +803,7 @@ export default function Home() {
                   width={60}
                   height={60}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong
@@ -829,11 +829,11 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/ayo.jpg"}
+                  src={"/rylan.jpg"}
                   width={60}
                   height={60}
                   alt="client image"
-                  className="rounded-full w-10 h-1w-10"
+                  className="rounded-full w-12 h-12"
                 />
                 <div className="flex flex-col gap-1">
                   <strong

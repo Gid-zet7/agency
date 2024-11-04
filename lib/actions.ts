@@ -8,7 +8,7 @@ export const sendEmail = async (
   subject: string | undefined,
   message: string
 ) => {
-  const endpoint = `https://billo-empire.vercel.app/api/mailgun`;
+  const endpoint = `https://www.billoempire.com/api/mailgun`;
 
   try {
     const res = await fetch(endpoint, {
