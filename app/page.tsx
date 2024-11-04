@@ -697,7 +697,7 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/wisdom.jpeg"}
+                  src={"/wisdom-1.jpeg"}
                   width={60}
                   height={60}
                   alt="client image"
@@ -764,7 +764,7 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/prince-akach.jpg"}
+                  src={"/clement.jpeg"}
                   width={60}
                   height={60}
                   alt="client image"
@@ -799,7 +799,7 @@ export default function Home() {
               </p>
               <div className="flex gap-3">
                 <Image
-                  src={"/ludvig-wiese.jpg"}
+                  src={"/elikem.jpeg"}
                   width={60}
                   height={60}
                   alt="client image"

@@ -27,6 +27,51 @@ export default function ContactUs() {
   const [showSuccessSnackbar, setShowSuccessSnackbar] = useState(false);
 
   useEffect(() => {
+    const navbarMenu = document.getElementById("menu");
+    const burgerMenu = document.getElementById("burger");
+    const overlayMenu = document.querySelector(".overlay");
+
+    if (burgerMenu && navbarMenu) {
+      const toggleMenu = () => {
+        burgerMenu.classList.toggle("is-active");
+        navbarMenu.classList.toggle("is-active");
+      };
+
+      burgerMenu.addEventListener("click", toggleMenu);
+
+      return () => burgerMenu.removeEventListener("click", toggleMenu);
+    }
+
+    // Close Navbar Menu on Click Links
+    const menuLinks = document.querySelectorAll(".menu-link");
+    menuLinks.forEach((link) => {
+      const handleLinkClick = () => {
+        burgerMenu?.classList.remove("is-active");
+        navbarMenu?.classList.remove("is-active");
+      };
+
+      link.addEventListener("click", handleLinkClick);
+
+      return () => link.removeEventListener("click", handleLinkClick);
+    });
+
+    const handleResize = () => {
+      if (window.innerWidth >= 992) {
+        if (navbarMenu?.classList.contains("is-active")) {
+          navbarMenu.classList.remove("is-active");
+          overlayMenu?.classList.remove("is-active");
+        }
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     if (error) {
       setShowErrorSnackbar(true);
       const timer = setTimeout(() => {
