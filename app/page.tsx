@@ -506,7 +506,7 @@ export default function Home() {
                 your business needs.
               </p>
             </div>
-            <div className="mb-10">
+            <div className="md:mb-10">
               <strong className="text-black font-semibold text-xl ">
                 Streamlined Process
               </strong>
@@ -521,8 +521,13 @@ export default function Home() {
       {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
 
       {/* ------------------------------------------------------End of Events Section-------------------------------------------------------------------- */}
-      <section className="flex justify-center items-center mt-40">
-        <div className=" max-w-7xl flex gap-8">
+      <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
+        <h1
+          className={`sm:text-4xl text-3xl font-extrabold text-base-content text-black mb-16 md:mb-8`}
+        >
+          Events
+        </h1>
+        <div className=" max-w-7xl flex gap-8 flex-col md:flex-row">
           <div className="mb-10 px-5 items-center justify-center flex gap-4 border-r border-black/10">
             <div className="flex flex-col rounded-md py-2 px-5 bg-blue-400 mt-10">
               <h1 className={`text-black text-2xl ${poppins.className}`}>11</h1>
