@@ -815,7 +815,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-4 bg-blue-500 rounded-md p-4">
+            {/* <div className="flex flex-col gap-4 bg-blue-500 rounded-md p-4">
               <Image
                 src={"/rating.png"}
                 width={120}
@@ -844,7 +844,7 @@ export default function Home() {
                   <h4 className="text-sm">HR manager at Fintech Gh</h4>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -936,7 +936,9 @@ export default function Home() {
                 preparation tips.
               </p>
               <Link href={"/blog/interview-tips"}>
-                <p className="text-black text-sm cursor-pointer">Read more</p>
+                <p className="text-black text-sm cursor-pointer">
+                  Read more &rarr;
+                </p>
               </Link>
             </div>
           </div>
