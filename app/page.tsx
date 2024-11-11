@@ -520,6 +520,193 @@ export default function Home() {
       </section>
       {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
 
+      {/* ------------------------------------------------------End of Events Section-------------------------------------------------------------------- */}
+      <section className="flex justify-center items-center mt-40">
+        <div className=" max-w-7xl flex gap-8">
+          <div className="mb-10 px-5 items-center justify-center flex gap-4 border-r border-black/10">
+            <div className="flex flex-col rounded-md py-2 px-5 bg-blue-400 mt-10">
+              <h1 className={`text-black text-2xl ${poppins.className}`}>11</h1>
+              <h3 className={`text-black ${poppins.className}`}>Nov</h3>
+            </div>
+
+            <div className="flex flex-col">
+              <div className="flex gap-2 items-center mb-6">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-400"></span>
+                </span>
+                <h3 className={`text-black ${poppins.className}`}>
+                  Ongoing event
+                </h3>
+              </div>
+              <h1 className={`text-black text-xl mb-3 ${poppins.className}`}>
+                Rigging Training
+              </h1>
+              <div className="flex gap-1 items-center">
+                <svg
+                  fill="#000000"
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 32 32"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>time1</title>
+                  <path d="M16 3.5c-7.181 0-13 5.82-13 13s5.819 13 13 13c7.179 0 13-5.82 13-13s-5.82-13-13-13zM15.895 27.027c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5c5.798 0 10.5 4.701 10.5 10.5s-4.702 10.5-10.5 10.5zM18.93 17.131h-2.98v-5.032c0-0.546-0.443-0.99-0.989-0.99s-0.99 0.443-0.99 0.99v6.021c0 0.547 0.443 0.989 0.99 0.989h3.969c0.547 0 0.99-0.442 0.99-0.989 0-0.546-0.443-0.989-0.99-0.989z"></path>
+                </svg>
+                <p className={`text-black mb-1 ${poppins.className}`}>
+                  9:00 AM, Mon <span className="text-blue-400">11th Nov</span> -
+                  Sat <span className="text-blue-400">16th Nov</span>
+                </p>
+              </div>
+              <div className="flex gap-1 items-center">
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="-4 0 32 32"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>location</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    strokeWidth="1"
+                    fill="none"
+                    fillRule="evenodd"
+                  >
+                    <g
+                      id="Icon-Set"
+                      transform="translate(-104.000000, -411.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z"
+                        id="location"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                <p className={`text-black ${poppins.className}`}>
+                  Halleluyah Junction, Afienya-Mataheko Rd.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-10 px-5 items-center justify-center flex gap-4">
+            <div className="flex flex-col rounded-md py-2 px-5 bg-blue-400 mt-10">
+              <h1 className={`text-black text-2xl ${poppins.className}`}>2</h1>
+              <h3 className={`text-black ${poppins.className}`}>Dec</h3>
+            </div>
+
+            <div className="flex flex-col">
+              <div className="flex gap-2 items-center mb-6">
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7"
+                    stroke="#000000"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <rect
+                    x="6"
+                    y="12"
+                    width="3"
+                    height="3"
+                    rx="0.5"
+                    fill="#000000"
+                  />
+                  <rect
+                    x="10.5"
+                    y="12"
+                    width="3"
+                    height="3"
+                    rx="0.5"
+                    fill="#000000"
+                  />
+                  <rect
+                    x="15"
+                    y="12"
+                    width="3"
+                    height="3"
+                    rx="0.5"
+                    fill="#000000"
+                  />
+                </svg>
+                <h3 className={`text-black ${poppins.className}`}>
+                  Upcoming event
+                </h3>
+              </div>
+              <h1 className={`text-black text-xl mb-3 ${poppins.className}`}>
+                Rigging Training 2
+              </h1>
+              <div className="flex gap-1 items-center">
+                <svg
+                  fill="#000000"
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 32 32"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>time1</title>
+                  <path d="M16 3.5c-7.181 0-13 5.82-13 13s5.819 13 13 13c7.179 0 13-5.82 13-13s-5.82-13-13-13zM15.895 27.027c-5.799 0-10.5-4.701-10.5-10.5s4.701-10.5 10.5-10.5c5.798 0 10.5 4.701 10.5 10.5s-4.702 10.5-10.5 10.5zM18.93 17.131h-2.98v-5.032c0-0.546-0.443-0.99-0.989-0.99s-0.99 0.443-0.99 0.99v6.021c0 0.547 0.443 0.989 0.99 0.989h3.969c0.547 0 0.99-0.442 0.99-0.989 0-0.546-0.443-0.989-0.99-0.989z"></path>
+                </svg>
+                <p className={`text-black mb-1 ${poppins.className}`}>
+                  9:30 PM, Mon <span className="text-blue-400">2nd Dec</span> -
+                  Sat <span className="text-blue-400">7th Dec</span>
+                </p>
+              </div>
+              <div className="flex gap-1 items-center">
+                <svg
+                  width="20px"
+                  height="20px"
+                  viewBox="-4 0 32 32"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <title>location</title>
+                  <desc>Created with Sketch Beta.</desc>
+                  <defs></defs>
+                  <g
+                    id="Page-1"
+                    stroke="none"
+                    strokeWidth="1"
+                    fill="none"
+                    fillRule="evenodd"
+                  >
+                    <g
+                      id="Icon-Set"
+                      transform="translate(-104.000000, -411.000000)"
+                      fill="#000000"
+                    >
+                      <path
+                        d="M116,426 C114.343,426 113,424.657 113,423 C113,421.343 114.343,420 116,420 C117.657,420 119,421.343 119,423 C119,424.657 117.657,426 116,426 L116,426 Z M116,418 C113.239,418 111,420.238 111,423 C111,425.762 113.239,428 116,428 C118.761,428 121,425.762 121,423 C121,420.238 118.761,418 116,418 L116,418 Z M116,440 C114.337,440.009 106,427.181 106,423 C106,417.478 110.477,413 116,413 C121.523,413 126,417.478 126,423 C126,427.125 117.637,440.009 116,440 L116,440 Z M116,411 C109.373,411 104,416.373 104,423 C104,428.018 114.005,443.011 116,443 C117.964,443.011 128,427.95 128,423 C128,416.373 122.627,411 116,411 L116,411 Z"
+                        id="location"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                <p className={`text-black ${poppins.className}`}>
+                  Halleluyah Junction, Afienya-Mataheko Rd.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ------------------------------------------------------Start of Services Section--------------------------------------------------------------- */}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
