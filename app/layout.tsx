@@ -52,6 +52,7 @@ export default function RootLayout({
           content="3b55a4501575f916e26ac2b3da471f4e"
         />
         <script
+          async
           type="text/javascript"
           src="https://cdn.diclotrans.com/sdk/v1/43375/0e940792f6c1efbac8d93e66b054fbf830b46270/lib.js"
         ></script>
