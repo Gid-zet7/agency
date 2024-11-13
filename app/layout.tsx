@@ -47,6 +47,10 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7263804468706453"
           crossOrigin="anonymous"
         ></script>
+        <meta
+          name="site-verification"
+          content="3b55a4501575f916e26ac2b3da471f4e"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
