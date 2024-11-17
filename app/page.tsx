@@ -125,6 +125,20 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const loadAdScript = () => {
+      const adScript = document.createElement("script");
+      adScript.type = "text/javascript";
+      adScript.async = true;
+      adScript.src =
+        "//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js";
+      document.getElementById("ad-container")?.appendChild(adScript);
+    };
+
+    // Lazy load the ad script
+    loadAdScript();
+  }, []);
+
   // const settings: Settings = {
   //   dots: false,
   //   infinite: true,
@@ -520,6 +534,12 @@ export default function Home() {
       </section>
       {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
 
+      {/* Ad container */}
+      <div
+        id="ad-container"
+        style={{ textAlign: "center", margin: "20px 0" }}
+      ></div>
+
       {/* ------------------------------------------------------End of Events Section-------------------------------------------------------------------- */}
       <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
         <h1
@@ -537,12 +557,10 @@ export default function Home() {
             <div className="flex flex-col">
               <div className="flex gap-2 items-center mb-6">
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-400"></span>
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-gray-500"></span>
                 </span>
-                <h3 className={`text-black ${poppins.className}`}>
-                  Ongoing event
-                </h3>
+                <h3 className={`text-black ${poppins.className}`}>Ended</h3>
               </div>
               <h1 className={`text-black text-xl mb-3 ${poppins.className}`}>
                 Rigging Training
