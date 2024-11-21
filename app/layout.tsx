@@ -56,6 +56,10 @@ export default function RootLayout({
           type="text/javascript"
           src="https://cdn.diclotrans.com/sdk/v1/43375/0e940792f6c1efbac8d93e66b054fbf830b46270/lib.js"
         ></script>
+        <script
+          type="text/javascript"
+          src="//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

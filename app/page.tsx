@@ -125,19 +125,30 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    const loadAdScript = () => {
-      const adScript = document.createElement("script");
-      adScript.type = "text/javascript";
-      adScript.async = true;
-      adScript.src =
-        "//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js";
-      document.getElementById("ad-container")?.appendChild(adScript);
-    };
+  // useEffect(() => {
+  //   // <iframe
+  //   //   src="//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js"
+  //   //   key="2149326cc3a61e5fce28f723b8784ee7"
+  //   //   width="468"
+  //   //   height="60"
+  //   //   style={{ border: 0 }}
+  //   //   loading="lazy"
+  //   //   // className="w-full"
+  //   //   // referrerPolicy="no-referrer-when-downgrade"
+  //   // ></iframe>;
+  //   const loadAdiframe = () => {
+  //     const adiframe = document.createElement("iframe");
+  //     adiframe.width = "468";
+  //     adiframe.height = "60";
+  //     adiframe.src =
+  //       "//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js";
+  //     adiframe.loading = "lazy";
+  //     document.getElementById("ad-container")?.appendChild(adiframe);
+  //   };
 
-    // Lazy load the ad script
-    loadAdScript();
-  }, []);
+  //   // Lazy load the ad iframe
+  //   loadAdiframe();
+  // }, []);
 
   // const settings: Settings = {
   //   dots: false,
@@ -533,12 +544,19 @@ export default function Home() {
         </div>
       </section>
       {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
-
-      {/* Ad container */}
-      <div
-        id="ad-container"
-        style={{ textAlign: "center", margin: "20px 0" }}
-      ></div>
+      <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
+        {/* Ad container */}
+        <iframe
+          src="https://www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js"
+          key="2149326cc3a61e5fce28f723b8784ee7"
+          width="468"
+          height="60"
+          style={{ border: 0 }}
+          loading="lazy"
+          // className="w-full"
+          // referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
 
       {/* ------------------------------------------------------End of Events Section-------------------------------------------------------------------- */}
       <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
