@@ -544,19 +544,17 @@ export default function Home() {
         </div>
       </section>
       {/* ------------------------------------------------------End of About Section-------------------------------------------------------------------- */}
-      <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
-        {/* Ad container */}
-        <iframe
+      {/* <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40"> */}
+      {/* Ad container */}
+      {/* <iframe
           src="https://www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js"
           key="2149326cc3a61e5fce28f723b8784ee7"
           width="468"
           height="60"
           style={{ border: 0 }}
           loading="lazy"
-          // className="w-full"
-          // referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </section>
+        ></iframe> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------------End of Events Section-------------------------------------------------------------------- */}
       <section className="flex flex-col  justify-center items-center mt-10 lg:mt-40">
