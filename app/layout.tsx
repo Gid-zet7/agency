@@ -1,8 +1,9 @@
+import React from "react";
 import "./globals.css";
 import Script from "next/script";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Footer from "@/components/Footer";
+import ModernFooter from "@/components/home/ModernFooter";
 import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = localFont({
@@ -19,7 +20,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title:
     "Billo Empire | Bridging Talent and Opportunity for a Brighter Future.",
-  description: "Welcome to Billo Empire",
+  description: "Ghana's leading recruitment agency specializing in matching exceptional talent with premier employers.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <Script
           async
@@ -51,23 +52,13 @@ export default function RootLayout({
           name="site-verification"
           content="3b55a4501575f916e26ac2b3da471f4e"
         />
-        <script
-          async
-          type="text/javascript"
-          src="https://cdn.diclotrans.com/sdk/v1/43375/0e940792f6c1efbac8d93e66b054fbf830b46270/lib.js"
-        ></script>
-        <script
-          async
-          type="text/javascript"
-          src="//www.highperformanceformat.com/2149326cc3a61e5fce28f723b8784ee7/invoke.js"
-        ></script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 text-slate-900`}
       >
         {children}
         <Analytics />
-        <Footer />
+        <ModernFooter />
       </body>
     </html>
   );
