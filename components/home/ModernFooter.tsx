@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Linkedin, Twitter, Youtube, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Linkedin, Twitter, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
 const ModernFooter = () => {
     return (

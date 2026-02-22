@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, Zap, Users, ShieldCheck, Globe, TrendingUp } from "lucide-react";
+import { Zap, Users, ShieldCheck, Globe } from "lucide-react";
 
 import Link from "next/link";
 

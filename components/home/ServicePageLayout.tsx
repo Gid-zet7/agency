@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import ModernNavbar from "@/components/home/ModernNavbar";
 import ModernFooter from "@/components/home/ModernFooter";
 
@@ -92,10 +93,11 @@ const ServicePageLayout = ({
                             className="lg:w-1/2 relative"
                         >
                             <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl relative">
-                                <img
+                                <Image
                                     src={imagePath}
                                     alt={title}
-                                    className="object-cover w-full h-full"
+                                    fill
+                                    className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                             </div>

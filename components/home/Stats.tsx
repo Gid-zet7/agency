@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useInView, useSpring, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Users, GraduationCap, Briefcase, Heart } from "lucide-react";
 
 interface CounterProps {

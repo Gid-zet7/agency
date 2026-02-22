@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, ArrowUpRight } from "lucide-react";
+import { Clock, MapPin, ArrowUpRight } from "lucide-react";
 
 import Link from "next/link";
 

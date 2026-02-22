@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Calendar, Clock, MapPin, Users, Award, BookOpen } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import ModernNavbar from "@/components/home/ModernNavbar";
 import ModernFooter from "@/components/home/ModernFooter";
 
@@ -131,11 +132,12 @@ const TrainingPageLayout = ({
                             transition={{ duration: 0.8 }}
                             className="lg:w-1/3 sticky top-32"
                         >
-                            <div className="rounded-[40px] overflow-hidden shadow-2xl mb-8">
-                                <img
+                            <div className="rounded-[40px] overflow-hidden shadow-2xl mb-8 relative aspect-square">
+                                <Image
                                     src={imagePath}
                                     alt={title}
-                                    className="object-cover w-full aspect-square"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
 
