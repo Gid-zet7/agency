@@ -23,7 +23,7 @@ const events = [
         title: "Rigging Training 2",
         time: "9:30 AM, Every Saturday",
         location: "Halleluyah Junction, Afienya-Mataheko Rd.",
-        status: "Upcoming",
+        status: "Ended",
         statusColor: "bg-blue-500",
         href: "/training/rigging",
     }
